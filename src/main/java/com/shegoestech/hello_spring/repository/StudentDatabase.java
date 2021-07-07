@@ -3,11 +3,15 @@ package com.shegoestech.hello_spring.repository;
 import org.springframework.stereotype.Repository;
 
 
+@Repository
 public class StudentDatabase {
-    public StudentDatabase() {
+    private final RandomService randomService;
+
+    public StudentDatabase(RandomService randomService) {
+        this.randomService = randomService;
     }
 
-    public String print(){
+    public String print() {
         return "StudentDatabase";
     }
 }
