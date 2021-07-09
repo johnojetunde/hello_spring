@@ -1,13 +1,15 @@
-package com.shegoestech.hello_spring;
+package com.shegoestech.hello_spring.controller;
 
 import com.shegoestech.hello_spring.services.CourseDetailService;
 import com.shegoestech.hello_spring.services.ShapePrinter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestController
+@Controller
+@ResponseBody
 @RequestMapping("/greetings")
 public class HelloWorldController {
 
