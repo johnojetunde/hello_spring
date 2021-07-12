@@ -1,5 +1,7 @@
 package com.shegoestech.hello_spring.controller;
 
+import com.shegoestech.hello_spring.AppConfig;
+import com.shegoestech.hello_spring.exception.NotFoundException;
 import com.shegoestech.hello_spring.services.CourseDetailService;
 import com.shegoestech.hello_spring.services.ShapePrinter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,17 @@ public class HelloWorldController {
     private CourseDetailService courseDetailService;
     @Autowired
     private ShapePrinter shapePrinter;
+    @Autowired
+    private AppConfig appConfig;
+
+
+//    public HelloWorldController(CourseDetailService courseDetailService,
+//                                ShapePrinter shapePrinter,
+//                                @Value("${app.default-name:Default AppName}") String appName) {
+//        this.courseDetailService = courseDetailService;
+//        this.shapePrinter = shapePrinter;
+//        this.defaultAppName = appName;
+//    }
 
 
     @GetMapping("/hello")
@@ -28,6 +41,16 @@ public class HelloWorldController {
 
     @GetMapping("/shapes")
     public String shapes() {
-        return shapePrinter.getShapeName();
+        throw new NotFoundException("We can't find any shape");
+    }
+
+    @GetMapping("/default")
+    public String defaultAppName() {
+        return appConfig.toString();
+    }
+
+    @GetMapping("/config")
+    public String configDetails() {
+        return appConfig.toString();
     }
 }

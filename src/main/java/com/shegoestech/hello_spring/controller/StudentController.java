@@ -5,7 +5,6 @@ import com.shegoestech.hello_spring.services.StudentRecordService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -30,7 +29,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Student> getById(@PathVariable("id") Long id) {
+    public Student getById(@PathVariable("id") Long id) {
         return studentRecordService.getById(id);
     }
 
