@@ -1,7 +1,10 @@
 package com.shegoestech.hello_spring.controller;
 
+import com.shegoestech.hello_spring.model.CreateValidation;
 import com.shegoestech.hello_spring.model.Student;
+import com.shegoestech.hello_spring.model.UpdateValidation;
 import com.shegoestech.hello_spring.services.StudentRecordService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -18,8 +21,11 @@ public class StudentController {
         this.studentRecordService = studentRecordService;
     }
 
+    //@Valid -
+    //@Validates -  allows the use of validation group
+
     @PostMapping(consumes = APPLICATION_JSON_VALUE)
-    public Student create(@RequestBody Student student) {
+    public Student create(@Validated(CreateValidation.class) @RequestBody Student student) {
         return studentRecordService.register(student);
     }
 
@@ -35,7 +41,7 @@ public class StudentController {
 
     @PutMapping(value = "/{id}", consumes = APPLICATION_JSON_VALUE)
     public Student updateStudent(@PathVariable("id") Long id,
-                                 @RequestBody Student student) {
+                                 @Validated(UpdateValidation.class) @RequestBody Student student) {
         return studentRecordService.updateStudent(id, student);
     }
 

@@ -1,40 +1,23 @@
 package com.shegoestech.hello_spring.model;
 
+import lombok.Data;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+@Data
 public class Student {
+    @NotNull(groups = UpdateValidation.class)
     private Long id;
+    @NotBlank(message = "Firstname is required", groups = {CreateValidation.class, UpdateValidation.class})
     private String firstName;
+    @NotBlank(message = "Lastname is required", groups = {CreateValidation.class, UpdateValidation.class})
     private String lastName;
+    @Size(min = 10, message = "Phone is not valid", groups = {CreateValidation.class, UpdateValidation.class})
     private String phone;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+    @NotBlank(message = "Email is required", groups = {CreateValidation.class, UpdateValidation.class})
+    @Email(message = "Email is invalid", groups = {CreateValidation.class, UpdateValidation.class})
+    private String email;
 }
