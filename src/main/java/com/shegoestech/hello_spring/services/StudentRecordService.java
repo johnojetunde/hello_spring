@@ -52,6 +52,7 @@ public class StudentRecordService {
         studentRecord.setFirstName(updatedStudent.getFirstName());
         studentRecord.setLastName(updatedStudent.getLastName());
         studentRecord.setPhone(updatedStudent.getPhone());
+        studentRecord.setEmail(updatedStudent.getEmail());
 
         STUDENT_MAP.put(id, studentRecord);
         return studentRecord;
