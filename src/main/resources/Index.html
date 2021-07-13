@@ -27,5 +27,64 @@
     <li>Address</li>
     <li>Phone Number</li>
 </ol>
+
+
+<table border="1">
+    <tbody>
+    <tr>
+        <td rowspan="2" colspan="2"></td>
+        <td colspan="2">Used Belt Deflection</td>
+        <td rowspan="2">Set deflection of new belt</td>
+    </tr>
+    <tr>
+        <td>Limit</td>
+        <td>Adjust Deflection</td>
+    </tr>
+    <tr>
+        <td rowspan="2">Alternator</td>
+        <td>Models without AC</td>
+        <td>10mm</td>
+        <td>5-7mm</td>
+        <td rowspan="2">5-7mm</td>
+    </tr>
+    <tr>
+        <td>Models with AC</td>
+        <td>12mm</td>
+        <td>6-8mm</td>
+    </tr>
+    <tr>
+        <td colspan="2">Power Steering Oil Pump</td>
+        <td>12.5mm</td>
+        <td>7.9mm</td>
+        <td>6-8mm</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<form action="index.html" method="get">
+    <label for="firstname">Enter first name: </label>
+    <input type="text" name="firstname" id="firstname"/> <br/>
+    <input type="number" name="number" id="number"><br/>
+    <input type="date" name="date" id="date"><br/>
+    <input type="color" name="color" id="color"><br/>
+
+    <label for="message">Enter message: </label><br/>
+    <textarea cols="10" rows="10" name="message" id="message"></textarea><br/>
+
+    <select name="city">
+        <option value="value1">Warsaw</option>
+        <option value="value2">London</option>
+        <option value="value3">Paris</option>
+        <option value="latvia" selected>Latvia</option>
+    </select><br/>
+    <input type="checkbox" name="accept"> I accept the rules<br/>
+    <br/>
+    <input type="radio" name="sex" value="female"> Female
+    <input type="radio" name="sex" value="male"> Male<br/>
+    <input type="file" name="fileUpload"><br/>
+    <input type="submit" value="Submit">
+    <button type="submit" value="Submit">Button</button>
+</form>
 </body>
 </html>
