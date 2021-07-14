@@ -1,6 +1,55 @@
 <html>
 <head>
     <title>HTML Introduction</title>
+    <link href="index.css" rel="stylesheet">
+    <style type="text/css">
+        .image {
+            /*float: left;*/
+            max-width: 20% !important;
+            padding: 2px;
+            min-height: 100px;
+            float: left;
+        }
+
+        body {
+            background-color: tan;
+            /*background-image: url("G0029512.jpg");*/
+            background-repeat: no-repeat;
+        }
+
+
+        p, h1 {
+            color: #2e1c1c;
+            /*background-color: bisque;*/
+            /*background: transparent;*/
+            text-align: center;
+            font-weight: normal;
+            position: fixed;
+        }
+
+        .container {
+            height: 500px;
+            width: 80%;
+            border: 1px #3a4b73 !important;
+            horiz-align: center;
+            background: transparent;
+            display: inline-flex;
+        }
+
+        input[type="text"] {
+            color: mediumorchid;
+            background-color: #fff1f9;
+        }
+
+        input[type="date"] {
+            color: sandybrown;
+
+        }
+
+        ul {
+            list-style: circle;
+        }
+    </style>
 </head>
 <body>
 <!--I want to comment this-->
@@ -11,12 +60,27 @@
 <h5>Heading 5</h5>
 <h6>heading 6</h6>
 
+<div class="container">
+    <span style="width: 50%; border-color: olive">Hello</span>
+    <span style="width:50%; border-color: aqua">Hi</span>
+</div>
 <p>I want this to be on a new paragraph</p>
 <p>This is a new paragraph</p>
 
 <a href="https://google.com" target="_blank">Google Search</a>
-<img src="G0029512.JPG" alt="Skydiving"/>
-<ul>
+<div class="image">
+    <img src="G0029512.JPG" alt="Skydiving" height="100px" width="100px"/>
+</div>
+<div class="image">
+    <img src="G0029512.JPG" alt="Skydiving" height="100px" width="100px"/>
+</div>
+<div class="image">
+    <img src="G0029512.JPG" alt="Skydiving" height="100px" width="100px"/>
+</div>
+<div class="image">
+    <img src="G0029512.JPG" alt="Skydiving" height="100px" width="100px"/>
+</div>
+<ul class="container">
     <li>Name</li>
     <li>Address</li>
     <li>Phone Number</li>
@@ -29,14 +93,14 @@
 </ol>
 
 
-<table border="1">
+<table border="1" style="background-color: aquamarine">
     <tbody>
     <tr>
         <td rowspan="2" colspan="2"></td>
         <td colspan="2">Used Belt Deflection</td>
         <td rowspan="2">Set deflection of new belt</td>
     </tr>
-    <tr>
+    <tr style="background-color: antiquewhite">
         <td>Limit</td>
         <td>Adjust Deflection</td>
     </tr>
