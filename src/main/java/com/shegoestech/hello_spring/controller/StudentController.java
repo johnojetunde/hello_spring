@@ -4,6 +4,7 @@ import com.shegoestech.hello_spring.model.CreateValidation;
 import com.shegoestech.hello_spring.model.Student;
 import com.shegoestech.hello_spring.model.UpdateValidation;
 import com.shegoestech.hello_spring.services.StudentRecordService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,15 +12,16 @@ import java.util.Collection;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/students", produces = APPLICATION_JSON_VALUE)
 public class StudentController {
 
     private final StudentRecordService studentRecordService;
 
-    public StudentController(StudentRecordService studentRecordService) {
-        this.studentRecordService = studentRecordService;
-    }
+//    public StudentController(StudentRecordService studentRecordService) {
+//        this.studentRecordService = studentRecordService;
+//    }
 
     //@Valid -
     //@Validates -  allows the use of validation group
