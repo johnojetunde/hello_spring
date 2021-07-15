@@ -25,4 +25,8 @@ public class Student {
     @NotBlank(message = "Email is required", groups = {CreateValidation.class, UpdateValidation.class})
     @Email(message = "Email is invalid", groups = {CreateValidation.class, UpdateValidation.class})
     private String email;
+
+    //@ManyToOne
+    //@OneToMany
+    //@OneToOne
 }

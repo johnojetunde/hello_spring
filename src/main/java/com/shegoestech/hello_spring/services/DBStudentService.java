@@ -6,10 +6,12 @@ import com.shegoestech.hello_spring.model.Student;
 import com.shegoestech.hello_spring.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.Optional;
 
+@Transactional
 @RequiredArgsConstructor
 @Service
 public class DBStudentService implements StudentRecordService {
@@ -47,8 +49,13 @@ public class DBStudentService implements StudentRecordService {
     @Override
     public void delete(Long id) {
         studentRepository.deleteById(id);
+//        studentRepository.count()
+//        studentRepository.findAll(Sort.by(Sort.Order.asc("firstName")));
     }
 
+    public boolean doesStudentIdExist(Long id) {
+        return studentRepository.existsById(id);
+    }
 
     public Optional<Student> findByFirstName(String firstName) {
         return studentRepository.findByFirstName(firstName);
