@@ -3,7 +3,7 @@ package com.shegoestech.hello_spring.controller;
 import com.shegoestech.hello_spring.model.CreateValidation;
 import com.shegoestech.hello_spring.model.Student;
 import com.shegoestech.hello_spring.model.UpdateValidation;
-import com.shegoestech.hello_spring.services.StudentRecordService;
+import com.shegoestech.hello_spring.services.DBStudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping(value = "/students", produces = APPLICATION_JSON_VALUE)
 public class StudentController {
 
-    private final StudentRecordService studentRecordService;
+    private final DBStudentService studentRecordService;
 
 //    public StudentController(StudentRecordService studentRecordService) {
 //        this.studentRecordService = studentRecordService;
@@ -32,8 +32,12 @@ public class StudentController {
     }
 
     @GetMapping
-    public Collection<Student> getAll() {
-        return studentRecordService.getAll();
+    public Collection<Student> getAll(@RequestParam(value = "firstName", required = false) String firstName) {
+        if (firstName != null) {
+            return studentRecordService.findByFirstName(firstName);
+        } else {
+            return studentRecordService.getAll();
+        }
     }
 
     @GetMapping("/{id}")

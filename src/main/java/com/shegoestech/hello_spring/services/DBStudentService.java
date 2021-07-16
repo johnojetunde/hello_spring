@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Transactional
@@ -57,8 +58,8 @@ public class DBStudentService implements StudentRecordService {
         return studentRepository.existsById(id);
     }
 
-    public Optional<Student> findByFirstName(String firstName) {
-        return studentRepository.findByFirstName(firstName);
+    public List<Student> findByFirstName(String firstName) {
+        return studentRepository.findAllByFirstName(firstName);
     }
 
     public Optional<Student> findByFirstNameAndLastName(String firstName, String lastName) {
