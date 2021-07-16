@@ -3,14 +3,19 @@ package com.shegoestech.hello_spring.services;
 import com.shegoestech.hello_spring.exception.BadRequestException;
 import com.shegoestech.hello_spring.exception.NotFoundException;
 import com.shegoestech.hello_spring.model.Student;
+import com.shegoestech.hello_spring.model.StudentSearch;
 import com.shegoestech.hello_spring.repository.StudentRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+
+import static org.springframework.data.domain.ExampleMatcher.matchingAll;
+
 
 @Transactional
 @RequiredArgsConstructor
@@ -21,6 +26,17 @@ public class DBStudentService implements StudentRecordService {
     @Override
     public Student register(Student student) {
         return studentRepository.save(student);
+    }
+
+    public List<Student> search(StudentSearch studentSearch) {
+        Student student = new Student();
+        student.setPhone(studentSearch.getPhone());
+        student.setEmail(studentSearch.getEmail());
+        student.setFirstName(studentSearch.getFirstName());
+        student.setLastName(studentSearch.getLastName());
+
+        Example<Student> studentExample = Example.of(student, matchingAll().withIgnoreNullValues());
+        return studentRepository.findAll(studentExample);
     }
 
     @Override

@@ -2,13 +2,16 @@ package com.shegoestech.hello_spring.controller;
 
 import com.shegoestech.hello_spring.model.CreateValidation;
 import com.shegoestech.hello_spring.model.Student;
+import com.shegoestech.hello_spring.model.StudentSearch;
 import com.shegoestech.hello_spring.model.UpdateValidation;
 import com.shegoestech.hello_spring.services.DBStudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Collection;
+import java.util.List;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -31,13 +34,14 @@ public class StudentController {
         return studentRecordService.register(student);
     }
 
+    @PostMapping(value = "/searches", consumes = APPLICATION_JSON_VALUE)
+    public List<Student> search(@Valid @RequestBody StudentSearch student) {
+        return studentRecordService.search(student);
+    }
+
     @GetMapping
-    public Collection<Student> getAll(@RequestParam(value = "firstName", required = false) String firstName) {
-        if (firstName != null) {
-            return studentRecordService.findByFirstName(firstName);
-        } else {
-            return studentRecordService.getAll();
-        }
+    public Collection<Student> getAll() {
+        return studentRecordService.getAll();
     }
 
     @GetMapping("/{id}")
