@@ -49,6 +49,9 @@ public class DBStudentService implements StudentRecordService {
 
     @Override
     public void delete(Long id) {
+        if (!studentRepository.existsById(id))
+            throw new BadRequestException("Student record with id " + id + "does not exist");
+
         studentRepository.deleteById(id);
 //        studentRepository.count()
 //        studentRepository.findAll(Sort.by(Sort.Order.asc("firstName")));
